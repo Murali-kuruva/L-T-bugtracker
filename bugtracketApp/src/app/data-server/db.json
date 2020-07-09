@@ -1,0 +1,52 @@
+{
+  "bugs": [
+    {
+      "id": 3,
+      "name": "Server communication failure",
+      "isClosed": true,
+      "createdAt": "2020-06-29T09:01:27.705Z"
+    },
+    {
+      "id": 4,
+      "name": "Data integrity checks failed",
+      "isClosed": true,
+      "createdAt": "2020-06-29T09:01:34.803Z"
+    },
+    {
+      "id": 6,
+      "name": "abds",
+      "isClosed": false,
+      "createdAt": "2020-07-08T08:34:36.283Z"
+    },
+    {
+      "id": 7,
+      "name": "new bug 1",
+      "isClosed": false,
+      "createdAt": "2020-07-08T13:50:42.428Z"
+    },
+    {
+      "id": 10,
+      "name": "bug tracker 11",
+      "isClosed": false,
+      "createdAt": "2020-07-09T04:56:52.532Z"
+    }
+  ],
+  "projects": [
+    {
+      "id": 1,
+      "name": "Payroll Master"
+    },
+    {
+      "id": 2,
+      "name": "Expense Manager"
+    },
+    {
+      "id": 22,
+      "name": "new project"
+    },
+    {
+      "id": 23,
+      "name": "new project dta"
+    }
+  ]
+}

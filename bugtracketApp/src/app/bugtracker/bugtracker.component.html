@@ -1,0 +1,49 @@
+<!-- <input type="button" value="Load Data" (click)="onLoadDataClick()"> -->
+<div>
+    <h3>Bug-Tracker</h3>
+</div>
+<p>
+	<a [routerLink]="['/add']">Create New</a>
+</p>
+<p>
+	<a [routerLink]="['/selecttracker']">Back</a>
+</p>
+<!-- <section class="stats">
+    <span class="closed">{{getClosedCount()}}</span>
+    <span> / </span>
+    <span>{{bugs.length}}</span>
+</section> -->
+  
+<input type="button" value="Toggle Stats" (click)="showStats = !showStats">
+<app-bug-stats [data]="bugs" *ngIf="showStats"></app-bug-stats>
+<section class="sort">
+    <label for="">Order By :</label>
+    <select name="" id="" (change) = "sortAttr = $event.target.value">
+        <option value="id">Id</option>
+        <option value="name">Name</option>
+        <option value="isClosed">Status</option>
+        <option value="createdAt">Created</option>
+    </select>
+    <label for="">Descending? :</label>
+    <input type="checkbox" name="" id="" (change)="sortDesc = $event.target.checked">
+</section>
+<!-- <section class="edit">
+    <label for="">Bug Name :</label>
+    <input type="text" (input)="newBugName=$event.target.value">
+    <input type="button" value="Add new" (click)="onAddNewClick()">
+</section> -->
+<app-bug-edit (bugCreated)="onNewBugCreated($event)"></app-bug-edit>
+<section class="list">
+    <ol>
+        <li *ngFor="let bug of ( bugs | sort:sortAttr:sortDesc)">
+            <span class="bugname"
+            (click)="onBugNameClick(bug)"
+            [ngClass]="{closed : bug.isClosed}" 
+            [title]="bug.name">{{bug.name | trimText:40}}</span>
+            <div class="datetime">{{bug.createdAt | elapsed }}</div>
+            <input type="button" value="Remove" (click)="onRemoveClick(bug)">
+        </li>
+        
+    </ol>
+    <input type="button" value="Remove Closed" *ngIf="bugs.length !== 0" (click)="onRemoveClosedClick()"> 
+</section>

@@ -1,0 +1,35 @@
+<div>
+    <h3>Project-Tracker</h3>
+</div>
+<p>
+    <a [routerLink]="['/addnewproject']">Create New Project</a>
+</p>
+<p>
+	<a [routerLink]="['/selecttracker']">Back</a>
+</p>
+<input type="button" value="Toggle Stats" (click)="showStats = !showStats">
+<app-project-stats [data]="projects" *ngIf="showStats"></app-project-stats>
+<section class="sort">
+    <label for="">Order By :</label>
+    <select name="" id="" (change) = "sortAttr = $event.target.value">
+        <option value="id">Id</option>
+        <option value="name">Name</option>
+       
+    </select>
+    <label for="">Descending? :</label>
+    <input type="checkbox" name="" id="" (change)="sortDesc = $event.target.checked">
+</section>
+<app-project-edit (projectCreated)="onNewprojectCreated($event)"></app-project-edit>
+<section class="list">
+    <ol>
+        <li *ngFor="let bug of  (projects |sort:sortAttr:sortDesc)">
+            <span class="bugname"
+            [title]="bug.name">{{bug.name | trimText:40}}</span>
+            <div></div>
+            <!-- <div class="datetime">{{bug.createdAt | elapsed }}</div> -->
+            <input type="button" value="Remove" (click)="onRemoveClick(bug)">
+        </li>
+        
+    </ol>
+    <!-- <input type="button" value="Remove Closed" *ngIf="bugs.length !== 0" (click)="onRemoveClosedClick()"> -->
+</section>
